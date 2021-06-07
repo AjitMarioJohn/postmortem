@@ -26,7 +26,7 @@ public class ThreadUtilityMethods {
         thread.start();*/
 
 //        join -> wait for the thread to die. If time is mentioned then wait for the specified time and check whether thread is died or not
-        Thread thread1 = new Thread(()->{
+        /*Thread thread1 = new Thread(()->{
                 System.out.println("Begin thread :: "+ Thread.currentThread().getName());
         try {
             TimeUnit.SECONDS.sleep(2);
@@ -38,7 +38,7 @@ public class ThreadUtilityMethods {
 
         Thread thread2 =  new Thread(()->{
             System.out.println("Begin thread :: "+ Thread.currentThread().getName());
-        }, "Thread 2");
+        }, "Thread 2");*/
 
         /*try {
             thread1.start();
@@ -49,15 +49,23 @@ public class ThreadUtilityMethods {
 
         thread2.start();*/
 
-        try {
+        /*try {
             thread1.start();
             TimeUnit.SECONDS.timedJoin(thread1, 1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        thread2.start();
+        thread2.start();*/
 
+//        find state of the thread
+        Thread thread1 =  new Thread(()->{
+            System.out.println("thread 1 state :: "+ Thread.currentThread().getState());
+        }, "Thread 1");
+
+        System.out.println("Main thread state "+ Thread.currentThread().getState());
+        thread1.start();
+        System.out.println("Main thread state "+ Thread.currentThread().getState());
 
     }
 
