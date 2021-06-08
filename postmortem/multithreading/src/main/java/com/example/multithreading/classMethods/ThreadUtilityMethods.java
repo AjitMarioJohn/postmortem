@@ -58,14 +58,41 @@ public class ThreadUtilityMethods {
 
         thread2.start();*/
 
-//        find state of the thread
-        Thread thread1 =  new Thread(()->{
-            System.out.println("thread 1 state :: "+ Thread.currentThread().getState());
-        }, "Thread 1");
-
-        System.out.println("Main thread state "+ Thread.currentThread().getState());
+//        find state of the thread -> return the state of thread whether NEW, RUNNABLE, WAIINT
+        /*Runnable runnable = ()->{
+            System.out.println(String.format("thread  :: %s %s", Thread.currentThread().getName(), Thread.currentThread().getState()));
+        };
+        Thread thread1 =  new Thread(runnable, "Thread 1");
+        Thread thread2 =  new Thread(runnable, "Thread 2");
+        System.out.println(String.format("thread  ::  %s %s", thread1.getName(), thread1.getState()));
         thread1.start();
-        System.out.println("Main thread state "+ Thread.currentThread().getState());
+        System.out.println(String.format("thread  ::  %s %s", thread1.getName(), thread1.getState()));
+        thread2.start();
+        System.out.println(String.format("thread  ::  %s %s", thread2.getName(), thread2.getState()));*/
+
+//        Daemon Thread -> service provider thread that provides services to the user thread. Its life depend on the mercy of user threads
+//        i.e. when all the user threads dies, JVM terminates this thread automatically.
+//        Note -> if user thread is started then it cannot be converted to daemon. On attempting it will throw IllegalThreadStateException exception
+        /*Runnable runnable = ()->{
+            if(Thread.currentThread().isDaemon()){
+                System.out.println(String.format("daemon thread  :: %s %s", Thread.currentThread().getName(), Thread.currentThread().getState()));
+                return;
+            }
+
+            System.out.println(String.format("user thread  :: %s %s", Thread.currentThread().getName(), Thread.currentThread().getState()));
+        };
+        Thread thread1 =  new Thread(runnable, "Thread 1");
+        Thread thread2 =  new Thread(runnable, "Thread 2");
+
+        *//*thread1.setDaemon(true);
+        thread1.start();
+        thread2.start();*//*
+
+//        Note -> if user thread is started then it cannot be converted to daemon. On attempting it will throw IllegalThreadStateException exception
+        thread1.start();
+        thread1.setDaemon(true);
+        thread2.start();*/
+
 
     }
 
